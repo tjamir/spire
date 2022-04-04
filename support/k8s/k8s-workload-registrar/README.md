@@ -82,8 +82,9 @@ workload registration mode is selected,
 `identity_template` is used with a default configuration:
 `ns/{{.Pod.Namespace}}/sa/{{.Pod.ServiceAccount}}`
 
-
 It may take several seconds for newly created SVIDs to become available to workloads.
+
+Nodes entries also can be automatically created. To achieve this, it is required that the server is using the [psat node attestor plugin](/doc/plugin_agent_nodeattestor_k8s_psat.md) to attest nodes.
 
 ### Federated Entry Registration
 

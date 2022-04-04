@@ -270,6 +270,8 @@ The SPIFFE ID granted to the workload is derived from the 1) identity template o
 
 It may take several seconds for newly created SVIDs to become available to workloads.
 
+Nodes entries also can be automatically created. To achieve this, it is required that the server is using the [psat node attestor plugin](/doc/plugin_agent_nodeattestor_k8s_psat.md) to attest nodes
+
 ### Identity Template Based Workload Registration
 
 Identity template based workload registration provides a way to customize the format of SPIFFE IDs. The identity format is scoped to a cluster.
