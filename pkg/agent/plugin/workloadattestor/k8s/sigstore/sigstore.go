@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/go-hclog"
 	"github.com/sigstore/cosign/cmd/cosign/cli/fulcio"
 	"github.com/sigstore/cosign/pkg/cosign"
+	"github.com/sigstore/cosign/pkg/cosign/bundle"
 	"github.com/sigstore/cosign/pkg/oci"
 	rekor "github.com/sigstore/rekor/pkg/generated/client"
 	"github.com/sigstore/sigstore/pkg/signature/payload"
@@ -188,7 +189,7 @@ type BundleBody struct {
 	Spec       BundleSpec `json:"spec"`
 }
 
-func getBundleSignatureContent(bundle *oci.Bundle) (string, error) {
+func getBundleSignatureContent(bundle *bundle.RekorBundle) (string, error) {
 	if bundle == nil {
 		return "", errors.New("Bundle is nil")
 	}

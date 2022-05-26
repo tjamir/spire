@@ -25,6 +25,7 @@ import (
 
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"github.com/hashicorp/go-hclog"
+	"github.com/sigstore/cosign/pkg/cosign/bundle"
 	"github.com/sigstore/cosign/pkg/oci"
 	"github.com/spiffe/spire/pkg/agent/common/cgroups"
 	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor"
@@ -804,7 +805,7 @@ func (signature) Chain() ([]*x509.Certificate, error) {
 	return nil, nil
 }
 
-func (signature) Bundle() (*oci.Bundle, error) {
+func (signature) Bundle() (*bundle.RekorBundle, error) {
 	return nil, nil
 }
 
