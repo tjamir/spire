@@ -225,6 +225,10 @@ func (s *Suite) SetupTest() {
 
 	s.sigstoreSelectors = nil
 	s.sigstoreSigs = nil
+	s.sigstoreReturnError = nil
+	s.sigstoreSkipSigs = false
+	s.sigstoreSkippedSigSelectors = nil
+
 }
 
 func (s *Suite) TearDownTest() {
@@ -249,7 +253,6 @@ func (s *Suite) TestAttestWithSigstoreSignatures() {
 	})
 	p := s.loadInsecurePlugin()
 	s.requireAttestSuccessWithPodAndSignature(p)
-	s.setSigstoreSelectors(nil)
 }
 
 func (s *Suite) TestAttestWithSigstoreSkippedImage() {
@@ -259,8 +262,6 @@ func (s *Suite) TestAttestWithSigstoreSkippedImage() {
 	s.setSigstoreSkippedSigSelectors([]string{"sigstore-validation:passed"})
 	p := s.loadInsecurePlugin()
 	s.requireAttestSuccessWithPodAndSkippedImage(p)
-	s.setSigstoreSkipSigs(false)
-	s.setSigstoreSkippedSigSelectors(nil)
 }
 
 func (s *Suite) TestAttestWithFailedSigstoreSignatures() {
@@ -268,7 +269,6 @@ func (s *Suite) TestAttestWithFailedSigstoreSignatures() {
 	p := s.loadInsecurePlugin()
 	s.setSigstoreReturnError(errors.New("sigstore error"))
 	s.requireAttestSuccessWithPod(p)
-	s.setSigstoreReturnError(nil)
 }
 
 func (s *Suite) TestAttestWithPidInKindPod() {
