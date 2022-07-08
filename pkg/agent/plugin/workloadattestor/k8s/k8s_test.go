@@ -228,7 +228,6 @@ func (s *Suite) SetupTest() {
 	s.sigstoreReturnError = nil
 	s.sigstoreSkipSigs = false
 	s.sigstoreSkippedSigSelectors = nil
-
 }
 
 func (s *Suite) TearDownTest() {
